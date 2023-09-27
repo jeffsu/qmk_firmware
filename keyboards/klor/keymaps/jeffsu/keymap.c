@@ -49,7 +49,6 @@ enum layer_names {
     _SYM,      // Symbols
     _NAV,      // Navigation
     _AUX,      // Aux
-    _KEEB,     // KEEB
 };
 
 // ┌───────────────────────────────────────────────────────────┐
@@ -109,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┤                     ├──────────┼──────────┼──────────┼──────────┼──────────┤
            KC_A,     KC_S,      KC_D,      NAV_F,     KC_G,                            KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┬──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-           KC_Z,     KC_X,      KC_C,      KC_V,      KC_B,     _______,   _______,    KC_N,      CTL_M,     GUI_COM,   RGUI_DOT,  KC_SLSH,
+           KC_Z,     KC_X,      KC_C,      KC_V,      KC_B,     KC_MUTE,   KC_MPLY,    KC_N,      CTL_M,     GUI_COM,   RGUI_DOT,  KC_SLSH,
     // ╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
                                            _______,  SYM_BSPC,  GUI_ENT,   SFT_ESC,   NUM_SPC,   _______
     //                                  ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯
@@ -464,14 +463,16 @@ bool oled_task_kb(void) {
 
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
-    static int8_t ticks = 0;
-    ticks++;
-    if (abs(ticks) >= 2) {
-        ticks = 0;
+    static int16_t key_timer = 0;
+
+    if (timer_elapsed(key_timer) < 100) {
         return true;
     }
 
+    key_timer = timer_read();
+
     if (index == 0) {
+
         if (clockwise) {
             tap_code(KC_VOLU);
         } else {
@@ -484,9 +485,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
     } else if (index == 1) {
         if (clockwise) {
-            tap_code(KC_VOLU);
+            tap_code(KC_MNXT);
         } else {
-            tap_code(KC_VOLD);
+            tap_code(KC_MPRV);
         }
     }
     return true;
@@ -516,6 +517,3 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                                                                  ████▄▄████▄▄████
 
 */
-
-
-
