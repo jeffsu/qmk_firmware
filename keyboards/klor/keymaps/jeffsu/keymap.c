@@ -122,9 +122,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ╭──────────┬──────────┬──────────┬──────────┬──────────╮                     ╭──────────┬──────────┬──────────┬──────────┬──────────╮
          KC_1,      KC_2,      KC_3,      KC_4,      KC_5,                            KC_6,      KC_7,      KC_8,      KC_9,      KC_0,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┤                     ├──────────┼──────────┼──────────┼──────────┼──────────┤
-         _______,  MOD1(KC_W),MOD1(KC_E),MOD1(KC_R),MOD2(KC_SPC),                     _______,  MOD1(KC_J),MOD1(KC_K), _______,   _______,
+         _______,   _______,   _______,   _______,   _______,                         _______,   _______,   _______,   _______,   _______,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┬──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-         _______, MOD2(KC_W),MOD2(KC_E), MOD2(KC_R), _______,   _______,   QK_BOOT,   _______,LGUI(KC_MINS),LGUI(KC_PLUS),_______, KC_BSLS,
+         _______,   _______,   _______,   _______,   _______,   _______,   QK_BOOT,   _______,   _______,   _______,   _______,   _______,
     // ╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
                                           _______,   AUX_BSPC,  _______,   _______,   PRESSED,   _______
     //                                  ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯
@@ -200,22 +200,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         // Favor tap behavior
-        case NUM_SPC:
-            return TAPPING_TERM + 25;
-        default:
-            return TAPPING_TERM;
-    }
-}
-
-bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        // don't repeat on double tap hold
-        case NAV_F:
         case WIN1_D:
         case WIN2_S:
-            return true;
+        case NUM_SPC:
+            return TAPPING_TERM + 50;
         default:
-            return false;
+            return TAPPING_TERM;
     }
 }
 
@@ -236,13 +226,17 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case GUI_COM:
         case CTL_M:
-            // Do not select the hold action when another key is tapped.
+        case NAV_F:
+        case WIN1_D:
+        case WIN2_S:
+            // Do not immediately select the hold action when another key is tapped.
             return false;
         default:
             // Immediately select the hold action when another key is tapped.
             return true;
     }
 }
+
 
 
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
