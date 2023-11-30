@@ -203,7 +203,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case WIN1_D:
         case WIN2_S:
         case NUM_SPC:
-            return TAPPING_TERM + 50;
+            return TAPPING_TERM + 75;
         default:
             return TAPPING_TERM;
     }
