@@ -30,5 +30,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NAV]  = MY_LAYOUT(NAV1______, NAV2______, NAV3______, NAV4______),
   [_WIN]  = MY_LAYOUT(WIN1______, WIN2______, WIN3______, WIN4______),
   [_SCR]  = MY_LAYOUT(SCR1______, SCR2______, SCR3______, SCR4______),
-  [_AUX]  = MY_LAYOUT(AUX1______, AUX2______, AUX3______, AUX4______)
+  [_AUX]  = MY_LAYOUT(AUX1______, AUX2______, AUX3______, AUX4______),
+  [_VIN]  = MY_LAYOUT(VIN1______, VIN2______, VIN3______, VIN4______)
 };
