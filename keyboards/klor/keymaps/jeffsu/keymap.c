@@ -49,8 +49,8 @@ enum layer_names {
     _SYM,      // Symbols
     _NAV,      // Navigation
     _AUX,      // Aux
-    _WIN1,      // Window Placement with Amethyst
-    _WIN2,      // Window Placement with Amethyst
+    _WIN,      // Window Placement with Amethyst
+    _SCR,      // Window Placement with Amethyst
 };
 
 // ┌───────────────────────────────────────────────────────────┐
@@ -66,8 +66,8 @@ enum layer_names {
 #define GUI_ENT   MT(MOD_LGUI, KC_ENT)
 #define SYM_BSPC  LT(_SYM, KC_BSPC)
 #define NAV_F     LT(_NAV, KC_F)
-#define WIN1_V    LT(_WIN1, KC_V)
-#define WIN2_C    LT(_WIN2, KC_C)
+#define WIN_V    LT(_WIN, KC_V)
+#define SCR_C    LT(_SCR, KC_C)
 
 #define CTL_M     MT(MOD_LCTL, KC_M)
 #define GUI_COM   MT(MOD_LGUI, KC_COMM)
@@ -120,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├──────────┼──────────┼──────────┼──────────┼──────────┤                     ├──────────┼──────────┼──────────┼──────────┼──────────┤
          KC_A,      KC_S,      KC_D,      NAV_F,     KC_G,                            KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┬──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-         KC_Z,      KC_X,      WIN2_C,    WIN1_V,    KC_B,      KC_MUTE,   KC_MPLY,   KC_N,      CTL_M,     GUI_COM,   RGUI_DOT,  KC_SLSH,
+         KC_Z,      KC_X,      SCR_C,    WIN_V,    KC_B,      KC_MUTE,   KC_MPLY,   KC_N,      CTL_M,     GUI_COM,   RGUI_DOT,  KC_SLSH,
     // ╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
                                           KC_LCTL,   SYM_BSPC,  GUI_ENT,   SFT_ESC,   NUM_SPC,   KC_LALT
     //                                  ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯
@@ -163,7 +163,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //                                  ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯
     ),
 
-    [_WIN1] = LAYOUT_saegewerk(
+    [_WIN] = LAYOUT_saegewerk(
     // ╭──────────┬──────────┬──────────┬──────────┬──────────╮                     ╭──────────┬──────────┬──────────┬──────────┬──────────╮
          _______,   _______,   _______,   _______,   _______,                       MOD2(KC_SPC),MOD2(KC_W),MOD2(KC_E),MOD2(KC_R),_______,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┤                     ├──────────┼──────────┼──────────┼──────────┼──────────┤
@@ -175,7 +175,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //                                  ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯
     ),
 
-    [_WIN2] = LAYOUT_saegewerk(
+    [_SCR] = LAYOUT_saegewerk(
     // ╭──────────┬──────────┬──────────┬──────────┬──────────╮                     ╭──────────┬──────────┬──────────┬──────────┬──────────╮
          _______,   _______,   _______,   _______,   _______,                         _______, MOD1(KC_W), MOD1(KC_E),MOD1(KC_R), _______,
     // ├──────────┼──────────┼──────────┼──────────┼──────────┤                     ├──────────┼──────────┼──────────┼──────────┼──────────┤
@@ -201,51 +201,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
 };
-
-// ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-// │ C U S T O M  C O N F I G                                                                                                                   │
-// └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-// ▝▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▘
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        // Favor tap behavior
-        case WIN1_V:
-        case WIN2_C:
-        case NUM_SPC:
-            return TAPPING_TERM + 1500;
-        default:
-            return TAPPING_TERM;
-    }
-}
-
-bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        // favor hold behavior on these keys
-        case SFT_ESC:
-        case SYM_BSPC:
-            // Immediately select the hold action when another key is pressed.
-            return true;
-        default:
-            // Do not select the hold action when another key is pressed.
-            return false;
-    }
-}
-
-bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case GUI_COM:
-        case CTL_M:
-        case NAV_F:
-        case WIN1_V:
-        case WIN2_C:
-            // Do not immediately select the hold action when another key is tapped.
-            return false;
-        default:
-            // Immediately select the hold action when another key is tapped.
-            return true;
-    }
-}
-
 
 
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
