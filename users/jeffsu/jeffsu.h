@@ -4,7 +4,6 @@
 #define __      _______
 
 
-#define LAYOUT_VA_ARGS(...) LAYOUT(__VA_ARGS__)
 
 enum layer_names {
     _BASE = 0, // Base QWERTY layout + thumbs
