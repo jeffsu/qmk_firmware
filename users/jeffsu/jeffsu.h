@@ -30,7 +30,7 @@ enum layer_names {
 #define RGUI_DOT  MT(MOD_RGUI|MOD_LCTL, KC_DOT)
 #define NUM_SPC   LT(_NUM, KC_SPC)
 #define SFT_ESC   MT(MOD_LSFT, KC_ESC)
-#define GUI_ENT   MT(MOD_LGUI, KC_ENT)
+#define NAV_SFT   LT(_NAV, KC_ENT)
 #define SYM_BSPC  LT(_SYM, KC_BSPC)
 #define NAV_F     LT(_NAV, KC_F)
 #define WIN_V     LT(_WIN, KC_V)
@@ -46,7 +46,8 @@ enum layer_names {
 #define MOD2(x) LCTL(LSFT(LALT(x))) // Move Window to Screen 1
 #define MOD1(x) LSFT(LALT(x)) // Go to screen
 
-#define TERM    LCTL(KC_GRAVE)
+#define TERM     LCTL(KC_GRAVE)
+#define TERM_TOG LGUI(KC_J)
 
 // OS bindings
 #define HIGHLIGHT KC_LSFT
@@ -70,7 +71,7 @@ enum layer_names {
 //                  ├──────────┼──────────┼──────────┼──────────┼──────────┤                     ├──────────┼──────────┼──────────┼──────────┼──────────┤
 #define BASE3_____    KC_Z,      KC_X,      SCR_C,     WIN_V,     KC_B,                            KC_N,      CTL_M,     GUI_COM,   RGUI_DOT,  KC_SLSH
 //                  ╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┬──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-#define BASE4_____                                     KC_LCTL,   SYM_BSPC,  GUI_ENT,   SFT_ESC,   NUM_SPC,   KC_LALT
+#define BASE4_____                                     KC_LCTL,   SYM_BSPC,  NAV_SFT,   SFT_ESC,   NUM_SPC,   KC_LALT
 //                                                   ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯
 
 
@@ -98,11 +99,11 @@ enum layer_names {
 //                  ╭──────────┬──────────┬──────────┬──────────┬──────────╮         NAV         ╭──────────┬──────────┬──────────┬──────────┬──────────╮
 #define NAV1______    _______,   _______,   _______,   _______,   _______,                        BEG_LINE,  WORD_PREV, WORD_NEXT,  END_LINE,  _______
 //                  ├──────────┼──────────┼──────────┼──────────┼──────────┤                     ├──────────┼──────────┼──────────┼──────────┼──────────┤
-#define NAV2______    _______,   _______,   _______,   PRESSED,   _______,                         KC_LEFT,   KC_DOWN,   KC_UP,     KC_RIGHT,  KC_TAB
+#define NAV2______    _______,   _______,   _______,   KC_LSFT,   _______,                         KC_LEFT,   KC_DOWN,   KC_UP,     KC_RIGHT,  KC_TAB
 //                  ├──────────┼──────────┼──────────┼──────────┼──────────┤                     ├──────────┼──────────┼──────────┼──────────┼──────────┤
 #define NAV3______    _______,   _______,   _______,   _______,   _______,                         KC_PGUP,   KC_UNDS,   KC_MINS,   KC_PGDN,   KC_BSLS
 //                  ╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┬──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-#define NAV4______                                     _______,   KC_LSFT,   _______,   TERM,      KC_TAB,   LGUI(KC_J)
+#define NAV4______                                     _______,   _______,   PRESSED,   TERM,      KC_TAB,    TERM_TOG
 //                                                   ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯
 
 
