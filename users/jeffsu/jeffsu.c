@@ -9,7 +9,7 @@
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         // Favor tap behavior
-        case WIN_V:
+        case WIN_F:
         case SCR_C:
         case NUM_SPC:
             return TAPPING_TERM + 1500;
@@ -33,10 +33,11 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case GUI_C:
         case GUI_COM:
         case CTL_M:
-        case NAV_F:
-        case WIN_V:
+        case NAV_ENT:
+        case WIN_F:
         case SCR_C:
             // Do not immediately select the hold action when another key is tapped.
             return false;
