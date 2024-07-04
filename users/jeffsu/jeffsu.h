@@ -32,7 +32,7 @@ enum layer_names {
 #define SFT_ESC   MT(MOD_LSFT, KC_ESC)
 #define NAV_ENT   LT(_NAV, KC_ENT)
 #define SYM_BSPC  LT(_SYM, KC_BSPC)
-#define WIN_F     MT(MOD_LALT, KC_F)
+#define ALT_F     MT(MOD_LALT, KC_F)
 #define SCR_C     LT(_SCR, KC_C)
 #define VIN_C     LT(_VIN, KC_C)
 #define GUI_C     MT(MOD_LGUI, KC_C)
@@ -70,7 +70,7 @@ enum layer_names {
 //                  ╭──────────┬──────────┬──────────┬──────────┬──────────╮         BASE        ╭──────────┬──────────┬──────────┬──────────┬──────────╮
 #define BASE1_____    KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,                            KC_Y,      KC_U,      KC_I,      KC_O,      KC_P
 //                  ├──────────┼──────────┼──────────┼──────────┼──────────┤                     ├──────────┼──────────┼──────────┼──────────┼──────────┤
-#define BASE2_____    KC_A,      KC_S,      KC_D,      WIN_F,     KC_G,                            KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN
+#define BASE2_____    KC_A,      KC_S,      KC_D,      ALT_F,     KC_G,                            KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN
 //                  ├──────────┼──────────┼──────────┼──────────┼──────────┤                     ├──────────┼──────────┼──────────┼──────────┼──────────┤
 #define BASE3_____    KC_Z,      KC_X,      GUI_C,     CTL_V,     KC_B,                            KC_N,      CTL_M,     GUI_COM,   RGUI_DOT,  KC_SLSH
 //                  ╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┬──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
