@@ -30,9 +30,9 @@ enum layer_names {
 #define RGUI_DOT  MT(MOD_RGUI|MOD_LCTL, KC_DOT)
 #define NUM_SPC   LT(_NUM, KC_SPC)
 #define SFT_ESC   MT(MOD_LSFT, KC_ESC)
-#define ALT_ENT   MT(MOD_LALT, KC_ENT)
+#define NAV_ENT   LT(_NAV, KC_ENT)
 #define SYM_BSPC  LT(_SYM, KC_BSPC)
-#define NAV_F     LT(_NAV, KC_F)
+#define WIN_F     MT(MOD_LALT, KC_F)
 #define SCR_C     LT(_SCR, KC_C)
 #define VIN_C     LT(_VIN, KC_C)
 #define GUI_C     MT(MOD_LGUI, KC_C)
@@ -70,11 +70,11 @@ enum layer_names {
 //                  ╭──────────┬──────────┬──────────┬──────────┬──────────╮         BASE        ╭──────────┬──────────┬──────────┬──────────┬──────────╮
 #define BASE1_____    KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,                            KC_Y,      KC_U,      KC_I,      KC_O,      KC_P
 //                  ├──────────┼──────────┼──────────┼──────────┼──────────┤                     ├──────────┼──────────┼──────────┼──────────┼──────────┤
-#define BASE2_____    KC_A,      KC_S,      KC_D,      NAV_F,     KC_G,                            KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN
+#define BASE2_____    KC_A,      KC_S,      KC_D,      WIN_F,     KC_G,                            KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN
 //                  ├──────────┼──────────┼──────────┼──────────┼──────────┤                     ├──────────┼──────────┼──────────┼──────────┼──────────┤
 #define BASE3_____    KC_Z,      KC_X,      GUI_C,     CTL_V,     KC_B,                            KC_N,      CTL_M,     GUI_COM,   RGUI_DOT,  KC_SLSH
 //                  ╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┬──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-#define BASE4_____                                     KC_LCTL,   SYM_BSPC,  ALT_ENT,   SFT_ESC,   NUM_SPC,   KC_LALT
+#define BASE4_____                                     KC_LCTL,   SYM_BSPC,  NAV_ENT,   SFT_ESC,   NUM_SPC,   KC_LALT
 //                                                   ╰──────────┴──────────┴──────────┴──────────┴──────────┴──────────╯
 
 
